@@ -13,6 +13,7 @@ type Destination = {
   transferTime: string
   bestFit: string
   tagline: string
+  verdict: string
   highlight:
     | "top-pick"
     | "beach"
@@ -21,6 +22,7 @@ type Destination = {
     | "food"
     | "family"
     | "wow"
+    | "designed"
   accent: "sun" | "sea" | "coral" | "palm" | "terra" | "rose" | "ink"
   image: string
   state: string
@@ -33,6 +35,26 @@ type Destination = {
 const destinations: Destination[] = [
   {
     rank: 1,
+    destination: "30A",
+    area: "Rosemary / Alys / Seaside / WaterColor",
+    ausFlightTime: "~1h 50m to VPS / 1-stop ECP",
+    dallasFlightTime: "~1h 55m – 2h 05m to ECP / VPS",
+    airportCode: "ECP / VPS",
+    transferTime: "30 – 60 min",
+    bestFit: "Upscale beach towns, group houses, walkable vibe",
+    tagline: "Twenty-six miles of pastel cottages & pearl-white sand",
+    verdict: "Bring the bicycle",
+    highlight: "top-pick",
+    accent: "sun",
+    image: "/images/30a.jpg",
+    state: "Florida (Panhandle)",
+    longitude: "86.14°W",
+    latitude: "30.32°N",
+    walkScore: 74,
+    walkRemark: "New Urbanism: engineered so you'd never need shoes.",
+  },
+  {
+    rank: 2,
     destination: "San Diego",
     area: "Coronado / La Jolla",
     ausFlightTime: "~3h 00m nonstop",
@@ -41,8 +63,9 @@ const destinations: Destination[] = [
     transferTime: "15 – 30 min",
     bestFit: "Best July weather, baby-friendly, easy USA",
     tagline: "Eternal seventy degrees on the Pacific",
-    highlight: "top-pick",
-    accent: "sun",
+    verdict: "Bring the baby",
+    highlight: "beach",
+    accent: "coral",
     image: "/images/san-diego.jpg",
     state: "California",
     longitude: "117.16°W",
@@ -51,7 +74,7 @@ const destinations: Destination[] = [
     walkRemark: "Stroll the strand. Eat a taco. Repeat until tan.",
   },
   {
-    rank: 2,
+    rank: 3,
     destination: "Fort Lauderdale",
     area: "Hollywood Beach",
     ausFlightTime: "~2h 35m – 3h 05m",
@@ -60,6 +83,7 @@ const destinations: Destination[] = [
     transferTime: "15 – 25 min",
     bestFit: "Easiest true beach/resort feel",
     tagline: "Boardwalks, daiquiris, the genuine resort article",
+    verdict: "Bring the spritz",
     highlight: "beach",
     accent: "sea",
     image: "/images/fort-lauderdale.jpg",
@@ -70,7 +94,7 @@ const destinations: Destination[] = [
     walkRemark: "Boardwalk is doing the Lord's pedestrian work.",
   },
   {
-    rank: 3,
+    rank: 4,
     destination: "Miami Beach",
     area: "Surfside / Bal Harbour",
     ausFlightTime: "~2h 40m – 3h 00m",
@@ -79,6 +103,7 @@ const destinations: Destination[] = [
     transferTime: "25 – 45 min",
     bestFit: "Fun couples trip, restaurants, beach",
     tagline: "Neon nights with a turquoise hangover",
+    verdict: "Bring the linen",
     highlight: "couples",
     accent: "rose",
     image: "/images/miami-beach.jpg",
@@ -89,7 +114,7 @@ const destinations: Destination[] = [
     walkRemark: "Leave the car keys in Texas. Walk in linen.",
   },
   {
-    rank: 4,
+    rank: 5,
     destination: "St. Pete Beach",
     area: "Clearwater, FL",
     ausFlightTime: "~2h 30m – 2h 40m",
@@ -98,6 +123,7 @@ const destinations: Destination[] = [
     transferTime: "30 – 45 min",
     bestFit: "Relaxed Gulf Coast beach trip",
     tagline: "Powder-sugar sand on the Gulf's quiet edge",
+    verdict: "Bring a paperback",
     highlight: "relaxed",
     accent: "palm",
     image: "/images/st-pete-beach.jpg",
@@ -108,7 +134,7 @@ const destinations: Destination[] = [
     walkRemark: "Walkable in a three-block radius. The radius is the bar.",
   },
   {
-    rank: 5,
+    rank: 6,
     destination: "Charleston",
     area: "Isle of Palms, SC",
     ausFlightTime: "~2h 30m – 2h 40m",
@@ -117,6 +143,7 @@ const destinations: Destination[] = [
     transferTime: "25 – 40 min",
     bestFit: "Beach + charming city + great food",
     tagline: "Shrimp & grits, then a soft Atlantic breeze",
+    verdict: "Bring the appetite",
     highlight: "food",
     accent: "terra",
     image: "/images/charleston.jpg",
@@ -127,7 +154,7 @@ const destinations: Destination[] = [
     walkRemark: "Golf cart > sneaker. A finding peer-reviewed by humidity.",
   },
   {
-    rank: 6,
+    rank: 7,
     destination: "Hilton Head",
     area: "Savannah Area",
     ausFlightTime: "~2h 15m – 3h 00m*",
@@ -136,6 +163,7 @@ const destinations: Destination[] = [
     transferTime: "45 – 60 min",
     bestFit: "Calm family beach, condos, low stress",
     tagline: "Bicycles on the sand, slow time, slow tides",
+    verdict: "Bring the helmet",
     highlight: "family",
     accent: "palm",
     image: "/images/hilton-head.jpg",
@@ -146,7 +174,7 @@ const destinations: Destination[] = [
     walkRemark: "Rent a cruiser. The cruiser is now your personality.",
   },
   {
-    rank: 7,
+    rank: 8,
     destination: "Oahu / Waikiki",
     area: "Hawaii",
     ausFlightTime: "~8h 25m+ / 1-stop",
@@ -155,8 +183,9 @@ const destinations: Destination[] = [
     transferTime: "20 – 30 min",
     bestFit: 'Best "wow" beach, but long for 5 days',
     tagline: "The dream itself, just an ocean away",
+    verdict: "Bring everything",
     highlight: "wow",
-    accent: "coral",
+    accent: "sea",
     image: "/images/waikiki.jpg",
     state: "Hawaii",
     longitude: "157.86°W",
@@ -499,7 +528,7 @@ function Marquee() {
     "JULY GETAWAY",
     "AUSTIN ✈ DALLAS",
     "VOL. ∞  •  ISSUE №01",
-    "SEVEN SHORES",
+    "EIGHT SHORES",
     "ONE WINNER",
     "DEPART JULY",
     "RETURN TANNED",
@@ -570,7 +599,7 @@ function Hero() {
           <div className="flex items-center gap-3">
             <span>Filed July 2026</span>
             <span className="opacity-50">·</span>
-            <span>Pages I — XII</span>
+            <span>Pages I — XIV</span>
           </div>
         </div>
 
@@ -606,7 +635,7 @@ function Hero() {
           className="mt-10 flex flex-col gap-8 md:grid md:grid-cols-12"
         >
           <p className="font-serif-italic text-xl leading-tight text-ink-soft sm:text-2xl md:col-span-7 md:col-start-2 md:text-[2rem]">
-            Seven sun-soaked candidates, vetted from{" "}
+            Eight sun-soaked candidates, vetted from{" "}
             <span className="marker font-display not-italic text-ink">Austin</span>{" "}
             &{" "}
             <span className="marker font-display not-italic text-ink">Dallas</span>{" "}
@@ -614,7 +643,7 @@ function Hero() {
           </p>
           <div className="md:col-span-3 md:col-start-10 md:flex md:justify-end">
             <div className="flex flex-col gap-2 border-l-2 border-ink pl-4 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
-              <span>Sample size · 07</span>
+              <span>Sample size · 08</span>
               <span>Method · Vibes & maths</span>
               <span>Editor · You</span>
               <span>Bias · Toward sand</span>
@@ -692,7 +721,7 @@ function TopPickSpread({ dest }: { dest: Destination }) {
               <FactRow label="State" value={dest.state} />
               <FactRow label="Latitude" value={dest.latitude} mono />
               <FactRow label="Longitude" value={dest.longitude} mono />
-              <FactRow label="Verdict" value="Bring the baby" />
+              <FactRow label="Verdict" value={dest.verdict} />
             </div>
           </div>
 
@@ -1016,10 +1045,10 @@ export default function DestinationsTable() {
           <div className="flex flex-wrap items-baseline justify-between gap-6 border-b border-ink/30 pb-4 font-mono text-[11px] uppercase tracking-[0.28em] text-ink-soft">
             <span>Section II</span>
             <span>The Runners-Up</span>
-            <span>pp. 04 — 12</span>
+            <span>pp. 04 — 14</span>
           </div>
           <h2 className="mt-6 font-display text-5xl leading-[0.9] tracking-[-0.03em] sm:text-6xl md:text-8xl">
-            Six more
+            Seven more
             <span className="ml-2 font-serif-italic text-coral sm:ml-3">contenders</span>
             <span className="text-ink/30">.</span>
           </h2>
