@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useEffect, useRef } from "react"
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 type Destination = {
-  rank: number
-  destination: string
-  area: string
-  ausFlightTime: string
-  dallasFlightTime: string
-  airportCode: string
-  transferTime: string
-  bestFit: string
-  tagline: string
-  verdict: string
+  rank: number;
+  destination: string;
+  area: string;
+  ausFlightTime: string;
+  dallasFlightTime: string;
+  airportCode: string;
+  transferTime: string;
+  bestFit: string;
+  tagline: string;
+  verdict: string;
   highlight:
     | "top-pick"
     | "beach"
@@ -22,15 +22,15 @@ type Destination = {
     | "food"
     | "family"
     | "wow"
-    | "designed"
-  accent: "sun" | "sea" | "coral" | "palm" | "terra" | "rose" | "ink"
-  image: string
-  state: string
-  longitude: string
-  latitude: string
-  walkScore: number
-  walkRemark: string
-}
+    | "designed";
+  accent: "sun" | "sea" | "coral" | "palm" | "terra" | "rose" | "ink";
+  image: string;
+  state: string;
+  longitude: string;
+  latitude: string;
+  walkScore: number;
+  walkRemark: string;
+};
 
 const destinations: Destination[] = [
   {
@@ -194,30 +194,26 @@ const destinations: Destination[] = [
     walkRemark: "Sidewalks contain at least one ukulele. Saunter accordingly.",
   },
   {
-    rank: 8,
+    rank: 9,
     destination: "Destin",
     area: "Miramar Beach, FL",
     ausFlightTime: "~1h 50m nonstop*",
     dallasFlightTime: "~1h 50m nonstop",
     airportCode: "VPS",
-    transferTime: "25-40 min",
+    transferTime: "25 – 40 min",
     bestFit: "Pretty Gulf beach, condos, family-friendly",
+    tagline: "Emerald water, white sand, condo towers in the pines",
+    verdict: "Bring the floaties",
     highlight: "family",
+    accent: "sea",
     image: "/images/destin.jpg",
+    state: "Florida",
+    longitude: "86.48°W",
+    latitude: "30.39°N",
+    walkScore: 32,
+    walkRemark: "The beach is the sidewalk. The sidewalk is also sand.",
   },
-  {
-    rank: 9,
-    destination: "30A",
-    area: "Rosemary / Seaside / WaterColor",
-    ausFlightTime: "~1h 50m to VPS*",
-    dallasFlightTime: "~1h 50m-2h 00m",
-    airportCode: "ECP/VPS",
-    transferTime: "30-60 min",
-    bestFit: "Nicer beach towns, group rentals, upscale",
-    highlight: "upscale",
-    image: "/images/30a.jpg",
-  },
-]
+];
 
 const accentColorMap: Record<Destination["accent"], string> = {
   sun: "var(--sun)",
@@ -227,7 +223,7 @@ const accentColorMap: Record<Destination["accent"], string> = {
   terra: "var(--terra)",
   rose: "var(--rose)",
   ink: "var(--ink)",
-}
+};
 
 function getHighlightColor(highlight: string) {
   const colors: Record<string, string> = {
@@ -239,8 +235,8 @@ function getHighlightColor(highlight: string) {
     family: "border-l-green-500",
     wow: "border-l-purple-500",
     upscale: "border-l-indigo-500",
-  }
-  return colors[highlight] || "border-l-slate-300"
+  };
+  return colors[highlight] || "border-l-slate-300";
 }
 
 // ---------- Decorative SVG components ----------
@@ -258,15 +254,15 @@ function SunburstSVG({ className = "" }: { className?: string }) {
         <circle cx="100" cy="100" r="34" />
         <circle cx="100" cy="100" r="42" strokeDasharray="2 4" />
         {Array.from({ length: 36 }).map((_, i) => {
-          const angle = (i / 36) * Math.PI * 2
-          const r = (n: number) => Math.round(n * 100) / 100
-          const x1 = r(100 + Math.cos(angle) * 48)
-          const y1 = r(100 + Math.sin(angle) * 48)
-          const len = i % 2 === 0 ? 38 : 24
-          const x2 = r(100 + Math.cos(angle) * (48 + len))
-          const y2 = r(100 + Math.sin(angle) * (48 + len))
+          const angle = (i / 36) * Math.PI * 2;
+          const r = (n: number) => Math.round(n * 100) / 100;
+          const x1 = r(100 + Math.cos(angle) * 48);
+          const y1 = r(100 + Math.sin(angle) * 48);
+          const len = i % 2 === 0 ? 38 : 24;
+          const x2 = r(100 + Math.cos(angle) * (48 + len));
+          const y2 = r(100 + Math.sin(angle) * (48 + len));
           // biome-ignore lint/suspicious/noArrayIndexKey: rays are positional and stable
-          return <line key={`ray-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} />
+          return <line key={`ray-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} />;
         })}
       </g>
       <text
@@ -281,7 +277,7 @@ function SunburstSVG({ className = "" }: { className?: string }) {
         sol
       </text>
     </svg>
-  )
+  );
 }
 
 function PalmSVG({ className = "" }: { className?: string }) {
@@ -301,7 +297,7 @@ function PalmSVG({ className = "" }: { className?: string }) {
         <circle cx="44" cy="65" r="1.4" />
       </g>
     </svg>
-  )
+  );
 }
 
 function WaveSVG({ className = "" }: { className?: string }) {
@@ -328,7 +324,7 @@ function WaveSVG({ className = "" }: { className?: string }) {
         opacity="0.4"
       />
     </svg>
-  )
+  );
 }
 
 function CompassSVG({ className = "" }: { className?: string }) {
@@ -344,7 +340,11 @@ function CompassSVG({ className = "" }: { className?: string }) {
         <circle cx="50" cy="50" r="44" />
         <circle cx="50" cy="50" r="36" strokeDasharray="1 3" />
         <path d="M50 6 L56 50 L50 94 L44 50 Z" fill="currentColor" />
-        <path d="M6 50 L50 44 L94 50 L50 56 Z" fill="currentColor" opacity="0.35" />
+        <path
+          d="M6 50 L50 44 L94 50 L50 56 Z"
+          fill="currentColor"
+          opacity="0.35"
+        />
       </g>
       <text
         x="50"
@@ -357,15 +357,15 @@ function CompassSVG({ className = "" }: { className?: string }) {
         N
       </text>
     </svg>
-  )
+  );
 }
 
 function walkVerdict(score: number) {
-  if (score >= 60) return "Stridable"
-  if (score >= 45) return "Sufficiently Strollable"
-  if (score >= 30) return "Sidewalks, Allegedly"
-  if (score >= 15) return "Bring a Bicycle"
-  return "Pedestrian Hostile"
+  if (score >= 60) return "Stridable";
+  if (score >= 45) return "Sufficiently Strollable";
+  if (score >= 30) return "Sidewalks, Allegedly";
+  if (score >= 15) return "Bring a Bicycle";
+  return "Pedestrian Hostile";
 }
 
 function WalkabilityGauge({
@@ -374,15 +374,15 @@ function WalkabilityGauge({
   accent,
   variant = "default",
 }: {
-  score: number
-  remark: string
-  accent: string
-  variant?: "default" | "hero"
+  score: number;
+  remark: string;
+  accent: string;
+  variant?: "default" | "hero";
 }) {
-  const pct = Math.min(100, Math.max(0, (score / 77) * 100))
-  const ticks = [0, 19, 38, 58, 77]
-  const verdict = walkVerdict(score)
-  const isHero = variant === "hero"
+  const pct = Math.min(100, Math.max(0, (score / 77) * 100));
+  const ticks = [0, 19, 38, 58, 77];
+  const verdict = walkVerdict(score);
+  const isHero = variant === "hero";
 
   return (
     <div
@@ -491,7 +491,7 @@ function WalkabilityGauge({
         ✦ Atlas Quarterly Calibration ✦ 77 = unmissable saunter potential
       </p>
     </div>
-  )
+  );
 }
 
 function StampBadge({
@@ -500,15 +500,18 @@ function StampBadge({
   rotate = -8,
   className = "",
 }: {
-  rank: number
-  label: string
-  rotate?: number
-  className?: string
+  rank: number;
+  label: string;
+  rotate?: number;
+  className?: string;
 }) {
   return (
     <div
       className={`stamp inline-flex flex-col items-center gap-0 px-4 py-2 text-ink ${className}`}
-      style={{ ["--tilt" as string]: `${rotate}deg`, transform: `rotate(${rotate}deg)` }}
+      style={{
+        ["--tilt" as string]: `${rotate}deg`,
+        transform: `rotate(${rotate}deg)`,
+      }}
     >
       <span className="font-mono text-[10px] uppercase tracking-[0.3em] opacity-75">
         №{String(rank).padStart(2, "0")}
@@ -517,7 +520,7 @@ function StampBadge({
         {label}
       </span>
     </div>
-  )
+  );
 }
 
 // ---------- Sub components ----------
@@ -532,7 +535,7 @@ function Marquee() {
     "ONE WINNER",
     "DEPART JULY",
     "RETURN TANNED",
-  ]
+  ];
   return (
     <div className="relative overflow-hidden border-y-2 border-ink bg-ink py-2.5 text-cream">
       <div className="flex w-max animate-marquee whitespace-nowrap">
@@ -551,7 +554,7 @@ function Marquee() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function Hero() {
@@ -622,7 +625,9 @@ function Hero() {
             Beach
           </span>
           <span className="block text-[clamp(3rem,14vw,10.5rem)] md:pl-[8%]">
-            <em className="font-serif-italic font-normal text-terra">Roulette</em>
+            <em className="font-serif-italic font-normal text-terra">
+              Roulette
+            </em>
             <span className="ml-2 align-top font-mono text-base font-normal text-sun md:ml-3 md:text-3xl">
               ’26
             </span>
@@ -636,9 +641,13 @@ function Hero() {
         >
           <p className="font-serif-italic text-xl leading-tight text-ink-soft sm:text-2xl md:col-span-7 md:col-start-2 md:text-[2rem]">
             Eight sun-soaked candidates, vetted from{" "}
-            <span className="marker font-display not-italic text-ink">Austin</span>{" "}
+            <span className="marker font-display not-italic text-ink">
+              Austin
+            </span>{" "}
             &{" "}
-            <span className="marker font-display not-italic text-ink">Dallas</span>{" "}
+            <span className="marker font-display not-italic text-ink">
+              Dallas
+            </span>{" "}
             — for the holiest week of summer.
           </p>
           <div className="md:col-span-3 md:col-start-10 md:flex md:justify-end">
@@ -657,20 +666,30 @@ function Hero() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-function FactRow({ label, value, mono = false }: { label: string; value: string; mono?: boolean }) {
+function FactRow({
+  label,
+  value,
+  mono = false,
+}: {
+  label: string;
+  value: string;
+  mono?: boolean;
+}) {
   return (
     <div className="flex items-baseline justify-between gap-3 border-b border-dashed border-ink/30 py-1.5">
       <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
         {label}
       </span>
-      <span className={`${mono ? "font-mono" : "font-display"} text-sm text-ink`}>
+      <span
+        className={`${mono ? "font-mono" : "font-display"} text-sm text-ink`}
+      >
         {value}
       </span>
     </div>
-  )
+  );
 }
 
 function TopPickSpread({ dest }: { dest: Destination }) {
@@ -688,9 +707,7 @@ function TopPickSpread({ dest }: { dest: Destination }) {
         {/* Left column — meta */}
         <div className="lg:col-span-5">
           <div className="flex flex-wrap items-center gap-4">
-            <div
-              className="font-display text-[7.5rem] font-medium leading-none tracking-[-0.06em] text-terra sm:text-[10rem] md:text-[14rem]"
-            >
+            <div className="font-display text-[7.5rem] font-medium leading-none tracking-[-0.06em] text-terra sm:text-[10rem] md:text-[14rem]">
               01
             </div>
             <div className="flex flex-col gap-3">
@@ -749,7 +766,7 @@ function TopPickSpread({ dest }: { dest: Destination }) {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function PostcardImage({
@@ -757,12 +774,13 @@ function PostcardImage({
   rotate = 0,
   size = "lg",
 }: {
-  dest: Destination
-  rotate?: number
-  size?: "lg" | "md"
+  dest: Destination;
+  rotate?: number;
+  size?: "lg" | "md";
 }) {
-  const accent = accentColorMap[dest.accent]
-  const heights = size === "lg" ? "h-[320px] md:h-[560px]" : "h-[240px] md:h-[320px]"
+  const accent = accentColorMap[dest.accent];
+  const heights =
+    size === "lg" ? "h-[320px] md:h-[560px]" : "h-[240px] md:h-[320px]";
 
   return (
     <div
@@ -778,7 +796,9 @@ function PostcardImage({
         {/* Decorative ticker top */}
         <div className="mb-2 flex items-center justify-between gap-3 px-1 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-soft">
           <span>Postmark · {dest.airportCode}</span>
-          <span>{dest.latitude} / {dest.longitude}</span>
+          <span>
+            {dest.latitude} / {dest.longitude}
+          </span>
         </div>
 
         <div className={`relative w-full overflow-hidden ${heights}`}>
@@ -834,20 +854,14 @@ function PostcardImage({
         Par Avion ✈
       </div>
     </div>
-  )
+  );
 }
 
-function RankingCard({
-  dest,
-  index,
-}: {
-  dest: Destination
-  index: number
-}) {
+function RankingCard({ dest, index }: { dest: Destination; index: number }) {
   // Asymmetric layouts: alternate image side, vary tilt
-  const isEven = index % 2 === 0
-  const tilt = [-2.2, 1.8, -1.4, 2.4, -2.6, 1.4][index % 6]
-  const accent = accentColorMap[dest.accent]
+  const isEven = index % 2 === 0;
+  const tilt = [-2.2, 1.8, -1.4, 2.4, -2.6, 1.4][index % 6];
+  const accent = accentColorMap[dest.accent];
 
   return (
     <article
@@ -879,9 +893,7 @@ function RankingCard({
       </div>
 
       {/* Text column */}
-      <div
-        className={`md:col-span-5 ${isEven ? "md:order-2" : "md:order-2"}`}
-      >
+      <div className={`md:col-span-5 ${isEven ? "md:order-2" : "md:order-2"}`}>
         <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.28em] text-ink-soft">
           <span className="h-px w-8" style={{ background: accent }} />
           <span>{dest.highlight.replace("-", " ")}</span>
@@ -944,13 +956,11 @@ function RankingCard({
       </div>
 
       {/* Image column */}
-      <div
-        className={`md:col-span-5 ${isEven ? "md:order-3" : "md:order-1"}`}
-      >
+      <div className={`md:col-span-5 ${isEven ? "md:order-3" : "md:order-1"}`}>
         <PostcardImage dest={dest} rotate={tilt} size="md" />
       </div>
     </article>
-  )
+  );
 }
 
 function Footer() {
@@ -1004,34 +1014,34 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 // ---------- Page ----------
 
 export default function DestinationsTable() {
-  const observerRef = useRef<IntersectionObserver | null>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return
-    const nodes = document.querySelectorAll<HTMLElement>("[data-rise-scroll]")
+    if (typeof window === "undefined") return;
+    const nodes = document.querySelectorAll<HTMLElement>("[data-rise-scroll]");
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-rise")
-            observerRef.current?.unobserve(entry.target)
+            entry.target.classList.add("animate-rise");
+            observerRef.current?.unobserve(entry.target);
           }
-        })
+        });
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
-    )
-    for (const n of nodes) observerRef.current?.observe(n)
-    return () => observerRef.current?.disconnect()
-  }, [])
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 },
+    );
+    for (const n of nodes) observerRef.current?.observe(n);
+    return () => observerRef.current?.disconnect();
+  }, []);
 
-  const topPick = destinations[0]
-  const rest = destinations.slice(1)
+  const topPick = destinations[0];
+  const rest = destinations.slice(1);
 
   return (
     <div className="min-h-screen overflow-x-clip">
@@ -1049,7 +1059,9 @@ export default function DestinationsTable() {
           </div>
           <h2 className="mt-6 font-display text-5xl leading-[0.9] tracking-[-0.03em] sm:text-6xl md:text-8xl">
             Seven more
-            <span className="ml-2 font-serif-italic text-coral sm:ml-3">contenders</span>
+            <span className="ml-2 font-serif-italic text-coral sm:ml-3">
+              contenders
+            </span>
             <span className="text-ink/30">.</span>
           </h2>
           <p className="mt-4 max-w-2xl font-serif-italic text-xl text-ink-soft md:text-2xl">
@@ -1065,16 +1077,22 @@ export default function DestinationsTable() {
               </span>
             </div>
             <p className="font-serif-italic text-lg text-ink md:col-span-7 md:text-xl">
-              On the matter of the <span className="font-display not-italic">Walkability Index</span>:
-              we have, after considerable deliberation and one ill-advised gin
-              martini, declared <span className="font-display not-italic">77</span> the
-              perfect upper bound. Anything higher would be showing off.
+              On the matter of the{" "}
+              <span className="font-display not-italic">Walkability Index</span>
+              : we have, after considerable deliberation and one ill-advised gin
+              martini, declared{" "}
+              <span className="font-display not-italic">77</span> the perfect
+              upper bound. Anything higher would be showing off.
             </p>
             <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.18em] text-ink-soft md:col-span-3">
-              0 — flee on wheels<br />
-              19 — bring a hat<br />
-              38 — passable<br />
-              58 — genuinely strollable<br />
+              0 — flee on wheels
+              <br />
+              19 — bring a hat
+              <br />
+              38 — passable
+              <br />
+              58 — genuinely strollable
+              <br />
               77 — biblical saunter
             </p>
           </aside>
@@ -1094,5 +1112,5 @@ export default function DestinationsTable() {
 
       <Footer />
     </div>
-  )
+  );
 }
