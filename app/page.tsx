@@ -90,6 +90,30 @@ const destinations = [
     highlight: "wow",
     image: "/images/waikiki.jpg",
   },
+  {
+    rank: 8,
+    destination: "Destin",
+    area: "Miramar Beach, FL",
+    ausFlightTime: "~1h 50m nonstop*",
+    dallasFlightTime: "~1h 50m nonstop",
+    airportCode: "VPS",
+    transferTime: "25-40 min",
+    bestFit: "Pretty Gulf beach, condos, family-friendly",
+    highlight: "family",
+    image: "/images/destin.jpg",
+  },
+  {
+    rank: 9,
+    destination: "30A",
+    area: "Rosemary / Seaside / WaterColor",
+    ausFlightTime: "~1h 50m to VPS*",
+    dallasFlightTime: "~1h 50m-2h 00m",
+    airportCode: "ECP/VPS",
+    transferTime: "30-60 min",
+    bestFit: "Nicer beach towns, group rentals, upscale",
+    highlight: "upscale",
+    image: "/images/30a.jpg",
+  },
 ]
 
 function getRankBadge(rank: number) {
@@ -108,6 +132,7 @@ function getHighlightColor(highlight: string) {
     food: "border-l-orange-500",
     family: "border-l-green-500",
     wow: "border-l-purple-500",
+    upscale: "border-l-indigo-500",
   }
   return colors[highlight] || "border-l-slate-300"
 }
